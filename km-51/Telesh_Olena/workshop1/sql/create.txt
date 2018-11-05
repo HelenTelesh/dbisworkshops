@@ -1,0 +1,82 @@
+-- Creating tables
+
+CREATE TABLE Users
+(
+login VARCHAR2(50) NOT NULL,
+passw VARCHAR2(50) NOT NULL,
+user_role VARCHAR2(8) NOT NULL,
+user_name VARCHAR2(25) NOT NULL,
+surname VARCHAR2(25) NOT NULL,
+fathername VARCHAR2(50) NULL,
+university VARCHAR2(100) NOT NULL,
+faculty VARCHAR2(50) NOT NULL,
+rec_book_num VARCHAR2(10) NULL
+);
+CREATE TABLE Discipline
+(
+discName VARCHAR2(100) NOT NULL,
+hours INTEGER NOT NULL,
+credits INTEGER NOT NULL
+);
+CREATE TABLE StudentSubj
+(
+student VARCHAR2(50) NOT NULL,
+subj_name VARCHAR2(100) NOT NULL,
+semestr INTEGER NOT NULL,
+mark INTEGER NULL,
+examenator VARCHAR2(50) NULL,
+exam_date DATE NULL
+);
+CREATE TABLE Teacher_Assign 
+(
+teacher_fk VARCHAR2(50) NOT NULL,
+discipline_fk VARCHAR2(100) NOT NULL
+);
+
+-- primary keys
+
+ALTER TABLE Users 
+ADD CONSTRAINT users_pk PRIMARY KEY (login);
+
+ALTER TABLE Teacher_Assign 
+ADD CONSTRAINT teachers_pk PRIMARY KEY (teacher_fk, discipline_fk);
+
+ALTER TABLE StudentSubj 
+ADD CONSTRAINT subject_pk PRIMARY KEY (student, subj_name);
+
+ALTER TABLE DISCIPLINE 
+ADD CONSTRAINT disc_pk PRIMARY KEY (discname);
+
+-- foreign keys
+
+ALTER TABLE Teacher_Assign 
+ADD CONSTRAINT tutor_fk FOREIGN KEY (teacher_fk)
+   REFERENCES Users (login);
+
+ALTER TABLE Teacher_Assign 
+ADD CONSTRAINT subj_fk FOREIGN KEY (discipline_fk)
+   REFERENCES Discipline (discname);
+
+ALTER TABLE Studentsubj 
+ADD CONSTRAINT student_fk FOREIGN KEY (student)
+   REFERENCES Users (login);
+
+ALTER TABLE Studentsubj
+ADD CONSTRAINT subject_fk FOREIGN KEY (subj_name)
+   REFERENCES Discipline (discname);
+
+
+-- other constraints
+
+alter table Users 
+add constraint role_bool check (user_role = 'student' OR user_role = 'teacher' OR user_role = 'admin');
+
+alter table Users 
+add constraint user_name_constr UNIQUE (user_name, surname, fathername);
+
+alter table Users 
+add constraint rec_book_unq UNIQUE (rec_book_num);
+
+alter table StudentSubj 
+add constraint mark_positive check (mark>=60);
+

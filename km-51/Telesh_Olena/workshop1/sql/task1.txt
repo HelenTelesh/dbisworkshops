@@ -1,0 +1,17 @@
+--Task 1
+
+insert into Discipline (discName,hours, credits) 
+
+values ('Методи оптимизации', '60', '2');
+
+
+
+select login, user_role
+From Users
+where user_role = 'teacher';
+
+
+
+insert into Teacher_Assign (teacher_fk,discipline_fk) 
+values ('tutor1', 'Методи оптимизации');
+

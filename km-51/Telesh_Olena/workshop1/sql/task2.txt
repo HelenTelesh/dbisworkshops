@@ -1,0 +1,19 @@
+
+-- Task 2
+
+
+select subj_name
+From STUDENTSUBJ,  Discipline
+
+where STUDENTSUBJ.subj_name=Discipline.discname
+
+group by subj_name;
+
+
+
+
+--update Discipline
+
+--set credits = '80'
+
+--where discname = 'Методи оптимизации'
