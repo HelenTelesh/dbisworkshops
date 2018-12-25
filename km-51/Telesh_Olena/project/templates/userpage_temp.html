@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+ <table border = 1>
+	<tr>
+	<th> Name </th>
+	<td> {{ user["user_name"] }} </td>
+	</tr>
+	<tr>
+	<th> Surname </th>
+	<td> {{ user["surname"] }} </td>
+	</tr>
+	<tr><td colspan = "2"> <h3 style = "text-align: center;"> {{ user["university"] }}</h3></td></tr>
+	<tr><td colspan = "2"> <h3 style = "text-align: center;"> {{ user["faculty"] }} </h3></td></tr>
+	<tr><th> Номер залікової книжки </th>
+	<td> {{ user["book_num"] }} </td>
+	</tr>
+	<tr><th> LOGIN </th>
+	<td> {{ user["login"] }} </td>
+	</tr>
+</table>
+
+<p style="text-align: center">
+<button type="button" onClick=location='\disciplines'  >Переглянути дисципліни</button>
+</p>
+</body>
+</html>

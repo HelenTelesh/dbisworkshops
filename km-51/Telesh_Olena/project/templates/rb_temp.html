@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p> <h2> Record book </h2></p>
+ <table border = 1>
+	<tr height = '40'> 	<th> Середній бал </th>  <td width = '50' align = 'center'> {{ medium }} </td> <th> Набрано кредитів </th> <td width = '50' align = 'center'> {{ credit}} </td> </tr>
+ 	<tr height = '25'> 	<td colspan = '4'> </td> </tr>
+ 
+</table>
+
+ <table border = 1>
+	<tr> 	<th rowspan='2'> Дисципліна </th> <th rowspan='2'> Семестр </th> <th colspan='2'> Кількість  </th> <th rowspan='2'> Оцінка </th>	<th rowspan='2'> Викладач </th>  <th rowspan='2'> Дата </th></tr>
+ 	<tr> <th> годин </th> <th> кредитів </th> 	</tr>
+ 	{% for line in lines: %}
+	<tr> 	
+		<td> {{line[0] }} </td> 
+		<td> {{ line[1] }} </td>
+		<td> {{ line[2] }} </td>
+		<td> {{ line[3] }} </td>
+		<td> {{ line[4] }} </td>
+		<td> {{ line[5] }} </td>
+		<td> {{ line[6] }} </td>
+	</tr>
+ 	<!-- <tr> 	
+		<td> {{line[i].subject }} </td> 
+		<td> {{ line[i].semester }} </td>
+		<td> {{ line[i].hours }} </td>
+		<td> {{ line[i].credits }} </td>
+		<td> {{ line[i].mark }} </td>
+		<td> {{ line[i].tutor }} </td>
+		<td> {{ line[i].date }} </td>
+	</tr> -->
+    {% endfor %}
+
+	
+ 
+</table>
+</body>
+</html>
