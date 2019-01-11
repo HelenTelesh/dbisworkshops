@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+
+function press_all(){
+    document.getElementById('all_disc').style.display='none';
+	document.getElementById('sem_par').style.display='inline';
+	location = '\all'
+};
+
+function press_sem(){
+    document.getElementById('all_disc').style.display='inline';
+	document.getElementById('sem_par').style.display='none';
+	var text = document.getElementById('semestr');
+    var val=text.value;
+	location= '\ ' + val;
+	  
+};
+
+</script>
+</head>
+<body>
+<p> <h2> Record book </h2></p>
+ <table border = 1>
+	<tr height = '40'> 	<th> Середній бал </th>  <td width = '50' align = 'center'> {{ medium }} </td> <th> Набрано кредитів </th> <td width = '50' align = 'center'> {{ credit}} </td> </tr>
+ 	<tr height = '25'> 	<td colspan = '4'> </td> </tr>
+ 
+</table>
+
+ <table border = 1>
+	<tr> 	<th rowspan='2'> Дисципліна </th> <th rowspan='2'> Семестр </th> <th colspan='2'> Кількість  </th> <th rowspan='2'> Оцінка </th>	<th rowspan='2'> Викладач </th>  <th rowspan='2'> Дата </th></tr>
+ 	<tr> <th> годин </th> <th> кредитів </th> 	</tr>
+ 	{% for line in lines: %}
+	<tr> 	
+		<td> {{line["discipline"] }} </td> 
+		<td> {{line["semester"] }} </td> 
+		<td> {{line["hours"] }} </td>
+		<td> {{line["credits"] }} </td>
+		<td> {{line["mark"] }} </td>
+		<td> {{line["tutor"] }} </td>
+		<td> {{line["date"] }} </td>
+	</tr>
+	{% endfor %}
+	 
+</table>
+<br>
+<p id = 'sem_par'> 
+<input type = text name='semestr' id='semestr' value = {{curr_sem}}> </input>
+<button type="button" name='for_sem' id='for_sem' onClick='press_sem()'> For semester </button> </p>
+<p><button type="submit" name='all_disc' id='all_disc' onclick='press_all();' > All disciplines </button> </p>
+
+</body>
+</html>

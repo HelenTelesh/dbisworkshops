@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Додати дисципліну студенту</title>
+</head>
+<body>
+<h1> {{subject}} </h1>
+ <form action = '/assign_disc/{{subject}}' method = 'POST' id = "assign_form">
+	<p> Студент <input type = "text" name = "student" /> </p>
+	<p> Семестр <input type = "text" name = "semester" /> </p>
+</form>
+
+<button type="submit" form="assign_form" name="action" value="assign_discipline"> Assign </button>
+
+</body>
+</html>

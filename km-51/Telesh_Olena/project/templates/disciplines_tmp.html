@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p> <h2> My disciplines </h2></p>
+ <!-- <table border = 1>
+	<tr height = '40'> 	<th> Середній бал </th>  <td width = '50' align = 'center'> {{ medium }} </td> <th> Набрано кредитів </th> <td width = '50' align = 'center'> {{ credit}} </td> </tr>
+ 	<tr height = '25'> 	<td colspan = '4'> </td> </tr>
+ 
+</table> -->
+
+ <table border = 1>
+	<tr> 	<th rowspan='2'> Дисципліна </th>  <th colspan='2'> Кількість  </th> </tr>
+ 	<tr> <th> годин </th> <th> кредитів </th> 	</tr>
+ 	{% for line in lines: %}
+	<tr> 	
+		<td> {{line["discipline"] }} </td>
+		<td> {{line["hours"] }} </td>
+		<td> {{line["credits"] }} </td>
+	</tr>
+	{% endfor %}
+	
+ 
+</table>
+</body>
+</html>

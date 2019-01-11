@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+
+function mark_msg(element){
+    var val= element.getAttribute('name');
+	location="/put_mark/" + val; 
+};
+
+function assign_msg(element){
+    var val= element.getAttribute('name');
+	location="/assign/" + val; 
+};
+</script>
+</head>
+
+<body>
+<p> <h2> Record book </h2></p>
+
+ <table border = 1>
+	<tr> 	<th rowspan='2'> Дисципліна </th> <th colspan='2'> Кількість  </th> </tr>
+ 	<tr> <th> годин </th> <th> кредитів </th> 	</tr>
+ 	{% for line in lines: %}
+	<tr> 	
+		<td> {{line["discipline"] }} </td> 
+		<td> {{line["hours"] }} </td>
+		<td> {{line["credits"] }} </td>
+		<td> 
+			<button type="submit" name='{{line["discipline"]}}'  onclick='mark_msg(this);' > Put Mark </button>
+
+			
+		</td>
+		<td>
+			<button type="submit" name='{{line["discipline"]}}'  onclick='assign_msg(this);' > Add to student </button>
+		</td>
+	</tr>
+	{% endfor %}
+				<button type="button" name='put_mark' onClick=location='\mark' disabled > Виставити оцінку </button>
+	
+</table> 
+</body>
+</html>
